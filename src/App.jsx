@@ -1,21 +1,23 @@
-import { useState } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Componentes/Navbar";
 import Products from "./Componentes/Products";
 import Home from "./Componentes/Home";
+import About from "./Componentes/About/About"
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <BrowserRouter>
+    <BrowserRouter> 
+      <div>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="products" element={<Products />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="about" element={<About/>} />
         </Routes>
-      </BrowserRouter>
-    </>
+      </div>
+    </BrowserRouter>
   );
 }
 
