@@ -1,7 +1,18 @@
 .container{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    
+    
 }
 
 .item1{
     border: 5px red solid;
+}
+
+.title-offer{
+    text-align: center;
+    margin: 0 auto;
+    color:red;
 }
