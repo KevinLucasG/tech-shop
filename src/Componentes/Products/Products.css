@@ -1,0 +1,22 @@
+.ProductList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60vw;
+    gap: 30px;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    
+    
+}
+
+.product-item {
+    flex: 1 0 33%;
+    width: 300px;
+    height: 300px;
+    border: 2px #000 solid;
+    max-width: 300px;
+ 
+}
