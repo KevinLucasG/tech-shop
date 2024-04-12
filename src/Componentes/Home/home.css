@@ -1,7 +1,11 @@
 .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; 
+    width: 100%;
+    margin: 0 auto;
     
     
     
@@ -9,10 +13,12 @@
 
 .item1{
     border: 5px red solid;
+    margin: 0 auto;
 }
 
 .title-offer{
     text-align: center;
     margin: 0 auto;
     color:red;
+    text-decoration: underline;
 }
