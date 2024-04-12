@@ -14,11 +14,11 @@ const Navbar = () => {
         <Link className="link" to="/Products">
           Products
         </Link>
-        <Link className="link" to="/Login">
+        <Link className="link" to="/signup">
           Sign up
         </Link>
         <Link className="link" to="/About">
-          About Us
+          Sobre nós
         </Link>
         <Link className="link" to="/Cart">
           <img src={cart} alt="Cart" className="cart-icon" width={"30px"} />
