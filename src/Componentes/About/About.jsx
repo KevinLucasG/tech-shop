@@ -6,28 +6,31 @@ const About = () => {
     <div className="container">
       <img src={image} alt="image" width="500px" height="500px"></img>
       <div className="description">
-        <h1 className="about"> About Us </h1>
-        <p >
-            At TechShop, we are committed to providing the latest, most advanced
-            technologies to drive our customers' success. We are a company
-            passionate about connecting people and organizations with cutting-edge
-            solutions that transform the way we live, work and relate. Our wide
-            range of products includes cutting-edge electronic devices, hardware and
-            software designed to meet the needs of individuals and businesses across
-            all industries. 
+        <h1 className="about"> Sobre nós </h1>
+        <p>
+          Na TechShop, temos o compromisso de fornecer o que há de mais recente
+          e avançado tecnologias para impulsionar o sucesso de nossos clientes.
+          Somos uma empresa apaixonado por conectar pessoas e organizações com
+          tecnologias de ponta soluções que transformam a forma como vivemos,
+          trabalhamos e nos relacionamos. Nossa ampla gama de produtos inclui
+          dispositivos eletrônicos de última geração, hardware e software
+          projetado para atender às necessidades de indivíduos e empresas em
+          todo todas as indústrias.
         </p>
 
-        <p >
-            From smartphones and laptops to advanced security
-            systems and home automation solutions, we are constantly updating our
-            inventory to offer the best in technology. Plus, our dedicated team of
-            technology experts are always on hand to provide personalized support
-            and expert guidance, ensuring our customers get the maximum benefit from
-            their purchases with us. At InovaTech Solutions, we don't just sell
-            technology - we empower the future. Join us as we embark on this
-            exciting journey of innovation and technological progress.
+        <p>
+          De smartphones e laptops a segurança avançada sistemas e soluções de
+          automação residencial, estamos constantemente atualizando nossos
+          estoque para oferecer o que há de melhor em tecnologia. Além disso,
+          nossa equipe dedicada de especialistas em tecnologia estão sempre
+          disponíveis para fornecer suporte personalizado e orientação
+          especializada, garantindo que nossos clientes obtenham o máximo
+          benefício de suas compras conosco. Na InovaTech Solutions, não
+          vendemos apenas tecnologia - capacitamos o futuro. Junte-se a nós
+          enquanto embarcamos nesta emocionante jornada de inovação e progresso
+          tecnológico.
         </p>
-        </div>
+      </div>
     </div>
   );
 };
