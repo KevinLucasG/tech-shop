@@ -9,13 +9,10 @@ const Navbar = () => {
       <h2 className="title">TechShop</h2>
       <nav className="navbar">
         <Link className="link" to="/">
-          Home
+          Inicio
         </Link>
-        <Link className="link" to="/Products">
-          Products
-        </Link>
-        <Link className="link" to="/signup">
-          Sign up
+        <Link className="link" to="/login">
+          Login
         </Link>
         <Link className="link" to="/About">
           Sobre nós
