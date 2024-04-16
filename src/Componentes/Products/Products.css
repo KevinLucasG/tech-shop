@@ -16,7 +16,6 @@
     flex: 1 0 33%;
     width: 300px;
     height: 300px;
-    border: 2px #000 solid;
     max-width: 300px;
     display: flex;
     flex-direction: column;
