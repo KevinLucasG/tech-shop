@@ -12,7 +12,7 @@ const Products = () => {
     return (
         <div className="ProductList">
             <Link to="/product/samsung-galaxy-a14" className="product-item">
-                <img className="img-product" src={a14} alt="Samsung Galaxy A14" width="350" height="250" />
+                <img className="img-product" src={a14} alt="Samsung Galaxy A14" width="150" height="200" />
                 <div className="belowbar">
                     <h3>Samsung Galaxy A14</h3>
                     <p className="price">R$ 899</p>
