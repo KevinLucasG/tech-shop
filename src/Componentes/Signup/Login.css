@@ -1,0 +1,8 @@
+
+.form{
+    padding: 2rem 0;
+    width: 500px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background-color: rgb(55, 235, 235);
+}
