@@ -1,37 +1,37 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 import "./ProductPage.css";
-import a14 from "../../assets/galaxy-a14.png";
-import cart from "../../assets/cart.png";
+import productsData from './productsData';
+
 const ProductPage = () => {
-  return (
-    <div className="section-product">
-      <div className="product-window">
-        <img
-          className="img-product-window"
-          src={a14}
-          alt="Samsung Galaxy A14"
-          width="450"
-          height="340"
-        />
-        
-        
-        <div className="description">
-          <h2 className="title-product">Samsung Galaxy A14</h2>
-          <p className="text-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            voluptates odit ratione adipisci, ipsam iste. Hic error vitae
-            tempore ea at! Eligendi explicabo consequatur aliquam, quisquam
-            repudiandae vel modi inventore?
-          </p>
-          <button className="btn-buy" type="button">
-          
-            Adicionar ao Carrinho
-          </button>
-          
+    const { productId } = useParams(); // Obtenha o productId da URL
+    const product = productsData[productId]; // Busque os dados do produto com base no productId
+    console.log(product.imageUrl)
+    // Verifique se o produto foi encontrado
+    if (!product) {
+        return <p>Produto não encontrado.</p>;
+    }
+
+    return (
+        <div className="section-product">
+            <div className="product-window">
+                <img
+                    className="img-product-window"
+                    src={product.imageUrl} // Use `product.imageUrl` para a imagem do produto
+                    alt={product.name} // Use `product.name` para o alt text
+                    width="450"
+                    height="340"
+                />
+                <div className="description">
+                    <h2 className="title-product">{product.name}</h2> {/* Use `product.name` para o título */}
+                    <p className="text-description">{product.description}</p> {/* Use `product.description` para a descrição */}
+                    <button className="btn-buy" type="button">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ProductPage;
