@@ -9,8 +9,10 @@ import pocox6 from "../../assets/pocox6.png";
 import { Link } from "react-router-dom";
 
 const Products = () => {
+    console.log(a14);
     return (
         <div className="ProductList">
+            
             <Link to="/product/samsung-galaxy-a14" className="product-item">
                 <img className="img-product" src={a14} alt="Samsung Galaxy A14" width="150" height="200" />
                 <div className="belowbar">
