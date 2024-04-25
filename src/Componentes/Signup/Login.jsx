@@ -1,52 +1,53 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import "./Login.css"
-const Login = ({ setUser }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+import './Login.css'; // Importando o arquivo CSS
 
-    if (!name || !email) return;
-    setUser({name:name, email:email});
-    navigate('/dashboard');
-  
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Username:', username);
+    console.log('Password:', password);
+    setUsername('');
+    setPassword('');
   };
 
   return (
-    <section className="section">
-      <form className="form" onSubmit={handleSubmit}>
-        <h5>login</h5>
-        <div className="form-row">
-          <label htmlFor="name" className="form-label">
-            name
-          </label>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Usuário:</label>
           <input
             type="text"
-            className="form-input"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            id="username"
+            value={username}
+            onChange={handleUsernameChange}
           />
         </div>
-        <div className="form-row">
-          <label htmlFor="email" className="form-label">
-            email
-          </label>
+        <div className="form-group">
+          <label htmlFor="password">Senha:</label>
           <input
-            type="email"
-            className="form-input"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
           />
         </div>
-        <button type="submit" className="btn btn-block">
-          login
-        </button>
+        <button type="submit">Login</button>
       </form>
-    </section>
+    </div>
   );
 };
+
 export default Login;
