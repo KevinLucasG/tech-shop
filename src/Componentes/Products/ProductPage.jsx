@@ -6,6 +6,7 @@ import productsData from "./productsData";
 const ProductPage = () => {
   const { productId } = useParams(); // Obtenha o productId da URL
   const product = productsData[productId]; // Busque os dados do produto com base no productId
+
   // Verifique se o produto foi encontrado
   if (!product) {
     return <p>Produto não encontrado.</p>;
@@ -26,13 +27,15 @@ const ProductPage = () => {
           {/* Use `product.name` para o título */}
           <p className="text-description">{product.description}</p>{" "}
           {/* Use `product.description` para a descrição */}
-        
         </div>
-        <div className="buy-section" >
-            <p className="price-product">R$ {Number.isInteger(product.price) ? product.price : product.price.toFixed(3)}</p>
-            <button className="btn-buy" type="button">Adicionar ao Carrinho</button>
+        <div className="buy-section">
+          <p className="price-product">
+            R$ {Number.isInteger(product.price) ? product.price : product.price.toFixed(3)}
+          </p>
+          <button className="btn-buy" type="button">
+            Adicionar ao Carrinho
+          </button>
         </div>
-        
       </div>
     </div>
   );
