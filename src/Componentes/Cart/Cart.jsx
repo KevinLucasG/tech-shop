@@ -1,29 +1,30 @@
-import React, { useState } from 'react'
-import './Cart.css'
+import React from "react";
+import { useCart } from "./CartContext";
+import { addToCart } from '../Products/ProductPage';
+import "./Cart.css";
 
 const Cart = () => {
-  const [action, setList] = useState('nothing')
-  const items = () => {
-    if(producstsadded > 0){
-      setList('product');
-    }
-
-  }
+  const { cart } = useCart();
+  console.log(addToCart.setcart)
   return (
-    
     <div>
-      {action === "nothing" ? (
-        <h1 className='no-products'>You have nothing in your cart</h1>
-
+      {cart.length === 0 ? (
+        
+        <h1 className="no-products">Você não tem nada no seu carrinho</h1>
       ) : (
         <>
-          <div>You have products</div>
+          <h1>Você tem {cart.length} produto(s) no seu carrinho:</h1>
+          <ul>
+            {cart.map((product) => (
+              <li key={product.id}>{product.name}</li>
+            ))}
+          </ul>
         </>
       )}
-        
-      
+      <button className="renmove"></button>
+        <i className="bx bx-x"></i>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
