@@ -1,7 +1,9 @@
 .title{
-     margin-left: 25vw;
+     margin-left: 20vw;
      margin-top: 20px;
      margin-bottom: 20px;
+     font-family: Arial, Helvetica, sans-serif;
+   
    
 }
 
@@ -39,4 +41,17 @@
     color: rgb(56, 169, 235);
     border: 2px #25a4ee solid;
 
+}
+
+@media screen and (max-width: 768px) {
+    .title{
+        margin-left: 0vw;
+    }
+    .navbar {
+        width: 100vw; /* Adicionado ponto e vírgula */
+        font-size: 14px; /* Define o tamanho da fonte do corpo para 14 pixels em telas menores que 768 pixels de largura */
+    }
+    .container {
+        width: 90%; /* Define a largura do container para 90% da largura da tela em telas menores que 768 pixels de largura */
+    }
 }
