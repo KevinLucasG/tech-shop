@@ -1,10 +1,11 @@
-import React from "react";
-import { useCart } from "./CartContext";
-import { addToCart } from '../Products/ProductPage';
+import React, { useContext } from "react";
+import { CartContext } from "../../Contexts/CartProvider.jsx";
+
+
 import "./Cart.css";
 
 const Cart = () => {
-  const { cart } = useCart();
+  const {addToCart } = useContext(CartContext);
   console.log(addToCart.setcart)
   return (
     <div>
@@ -28,3 +29,4 @@ const Cart = () => {
 };
 
 export default Cart;
+
