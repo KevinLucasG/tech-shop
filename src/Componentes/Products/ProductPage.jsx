@@ -1,41 +1,55 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.css";
 import productsData from "./productsData";
+import { CartContext } from "../../Contexts/CartProvider";
 
 const ProductPage = () => {
-  const { productId } = useParams(); // Obtenha o productId da URL
-  const product = productsData[productId]; // Busque os dados do produto com base no productId
+  const { productId } = useParams();
+  const product = productsData[productId];
+  const { addToCart } = useContext(CartContext); 
 
-  // Verifique se o produto foi encontrado
   if (!product) {
     return <p>Produto não encontrado.</p>;
   }
+
+  const handleAddToCart = () => {
+    addToCart(product); 
+  };
 
   return (
     <div className="section-product">
       <div className="product-window">
         <img
           className="img-product-window"
-          src={product.imageUrl} // Use `product.imageUrl` para a imagem do produto
-          alt={product.name} // Use `product.name` para o alt text
+          src={product.imageUrl}
+          alt={product.name}
           width="450"
           height="340"
         />
         <div className="description">
-          <h2 className="title-product">{product.name}</h2>{" "}
-          {/* Use `product.name` para o título */}
-          <p className="text-description">{product.description}</p>{" "}
-          {/* Use `product.description` para a descrição */}
+          <h2 className="title-product">{product.name}</h2>
+          <p className="text-description">{product.description}</p>
         </div>
         <div className="buy-section">
           <p className="price-product">
-            R$ {Number.isInteger(product.price) ? product.price : product.price.toFixed(3)}
+            R${" "}
+            {Number.isInteger(product.price)
+              ? product.price
+              : product.price.toFixed(3)}
           </p>
-          <button className="btn-buy" type="button">
+          <button
+            className="btn-buy"
+            type="button"
+            onClick={handleAddToCart} 
+          >
             Adicionar ao Carrinho
           </button>
         </div>
+      </div>
+      <div className="cart-info">
+        <h3>Carrinho</h3>
+        {/* Aqui você pode listar os produtos no carrinho se desejar */}
       </div>
     </div>
   );
