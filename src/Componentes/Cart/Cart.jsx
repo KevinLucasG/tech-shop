@@ -1,30 +1,33 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../Contexts/CartProvider.jsx";
-
+import ProductsData from "../Products/productsData.jsx";
 
 import "./Cart.css";
 
 const Cart = () => {
-  const {addToCart } = useContext(CartContext);
-  console.log(addToCart.setcart)
+  const {cart, removeFromCart, clearCart} = useContext(CartContext);
+  
   return (
     <div>
       {cart.length === 0 ? (
         
         <h1 className="no-products">Você não tem nada no seu carrinho</h1>
       ) : (
-        <>
-          <h1>Você tem {cart.length} produto(s) no seu carrinho:</h1>
-          <ul>
-            {cart.map((product) => (
-              <li key={product.id}>{product.name}</li>
-            ))}
-          </ul>
-        </>
+        <ul>
+          {cart.map((item) => (
+            <li key={item.id}>
+              <img src={item.imageUrl} alt={item.name} style={{ width: '100px' }} />
+              <h3>{item.name}</h3>
+              <p>Price: ${item.price}</p>
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            </li>
+          ))}
+        </ul>
       )}
-      <button className="renmove"></button>
-        <i className="bx bx-x"></i>
-    </div>
+      {cart.length > 0 && (
+        <button onClick={clearCart}>Clear Cart</button>
+      )}
+    </div>         
   );
 };
 
