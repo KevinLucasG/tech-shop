@@ -7,11 +7,13 @@ import "./Cart.css";
 const Cart = () => {
   const {cart, removeFromCart, clearCart} = useContext(CartContext);
   const calculateTotal = () => {
+   
+    
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const formatPrice = (price) => {
-    return Number.isInteger(price) ? price : price.toFixed(3);
+    return price.toFixed(2).replace('.', ',');
   };
   
   return (
@@ -34,7 +36,7 @@ const Cart = () => {
       {cart.length > 0 && (
         <div className="confirmation-section">
           <button className="cleatbtn" onClick={clearCart}>Limpar Carrinho</button>
-          <h3 className="TotalPrice">Total do Carrinho: R$ {calculateTotal().toFixed(3)}</h3>
+          <h3 className="TotalPrice">Total do Carrinho: R$ {calculateTotal().toFixed(2)}</h3>
           <button className="buybtn">Comprar</button>
         </div>
       )}
