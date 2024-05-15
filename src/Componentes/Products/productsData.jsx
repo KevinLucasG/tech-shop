@@ -26,7 +26,7 @@ const productsData = {
   "iphone-15-pro": {
     id: "iphone-15-pro",
     name: "Iphone 15 Pro",
-    price: 642,
+    price: 6420,
     description:
       "O iPhone 15 Pro é a versão premium do novo iPhone 15, oferecendo recursos avançados para usuários exigentes. Ele apresenta uma tela ProMotion com taxa de atualização variável, câmeras aprimoradas com capacidades de fotografia computacional avançada e uma bateria de longa duração. Ideal para quem busca o melhor desempenho e recursos em um smartphone.",
     imageUrl: iphone15pro,
