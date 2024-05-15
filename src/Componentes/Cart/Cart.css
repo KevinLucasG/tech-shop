@@ -3,3 +3,63 @@
     margin-top: 2rem;
     color: red;
 }
+
+.cart-list{
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    justify-content: center;
+    gap: 20px
+
+}
+
+.cart-item{
+    display:flex;
+    flex-direction: row;
+    border: 2px #000 solid;
+    gap: 30px;
+    height:110px;
+    justify-content: space-between;
+}
+.removebtn{
+    width:30px;
+    height:30px;
+    background: none;
+    color: red;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.removebtn:hover{
+    background: red;
+    color: #fff;
+}
+.confirmation-section{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 15px;
+    gap: 10px;
+    
+    
+}
+.cleatbtn{
+    background: red;
+    width:150px;
+    margin: 0 auto;
+}
+.TotalPrice{
+    margin: 0 auto;
+    text-align: right;
+}
+.buybtn{
+    background: green;
+    width:200px;
+    height:50px;
+    margin: 0 auto;
+    
+    
+}

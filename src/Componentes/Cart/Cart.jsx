@@ -6,28 +6,39 @@ import "./Cart.css";
 
 const Cart = () => {
   const {cart, removeFromCart, clearCart} = useContext(CartContext);
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const formatPrice = (price) => {
+    return Number.isInteger(price) ? price : price.toFixed(3);
+  };
   
   return (
     <div>
       {cart.length === 0 ? (
-        
         <h1 className="no-products">Você não tem nada no seu carrinho</h1>
       ) : (
-        <ul>
+        <ul className="cart-list">
           {cart.map((item) => (
-            <li key={item.id}>
-              <img src={item.imageUrl} alt={item.name} style={{ width: '100px' }} />
-              <h3>{item.name}</h3>
-              <p>Price: ${item.price}</p>
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            <li className="cart-item" key={item.id}>
+              <img src={item.imageUrl} alt={item.name} style={{ width: '100px'}} />
+              <h3>{item.name} </h3>
+              <p>Preço: R$ {formatPrice(item.price * item.quantity)}</p>
+              <p>Quantidade: {item.quantity}</p>
+              <button className="removebtn" onClick={() => removeFromCart(item.id)}>X</button>
             </li>
           ))}
         </ul>
       )}
       {cart.length > 0 && (
-        <button onClick={clearCart}>Clear Cart</button>
+        <div className="confirmation-section">
+          <button className="cleatbtn" onClick={clearCart}>Limpar Carrinho</button>
+          <h3 className="TotalPrice">Total do Carrinho: R$ {calculateTotal().toFixed(3)}</h3>
+          <button className="buybtn">Comprar</button>
+        </div>
       )}
-    </div>         
+    </div>
   );
 };
 
