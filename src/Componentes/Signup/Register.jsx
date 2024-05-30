@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Login.css'; // Importando o arquivo CSS
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [displayName, setDisplayName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -18,40 +17,41 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !password) {
-      setError('Nome de usuário e senha são obrigatórios.');
+    if (!username || !password || !confirmPassword) {
+      setError('Todos os campos são obrigatórios.');
       return;
     }
 
-    // Verificação dos dados do usuário no localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === username && user.password === password);
+    if (password !== confirmPassword) {
+      setError('As senhas não coincidem.');
+      return;
+    }
 
-    if (user) {
-      setIsLoggedIn(true);
-      setDisplayName(username);
-      setUsername('');
-      setPassword('');
-      setError('');
+    // Armazenar dados do usuário no localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userExists = users.some(user => user.username === username);
+
+    if (userExists) {
+      setError('Nome de usuário já existe.');
     } else {
-      setError('Nome de usuário ou senha incorretos.');
+      const newUser = { username, password };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      console.log('Registered Username:', username);
+      console.log('Registered Password:', password);
+      navigate('/login');
     }
   };
 
-  if (isLoggedIn) {
-    return (
-      <div className="welcome-container">
-        <h2>Bem vindo: {displayName}</h2>
-        <button onClick={() => navigate('/dashboard')}>Ir para o Dashboard</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="register-container">
+      <h2>Registrar</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -73,20 +73,18 @@ const Login = () => {
           />
         </div>
         <div className="form-group">
-          <label>
-            <input type="checkbox" /> Lembrar-me
-          </label>
+          <label htmlFor="confirmPassword">Confirme a Senha:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+          />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Registrar</button>
       </form>
-      <p>
-        <a href="/forgot-password">Esqueceu sua senha?</a>
-      </p>
-      <p>
-        <a href="/register">Não tem uma conta? Registre-se</a>
-      </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;
