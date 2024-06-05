@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import './Login.css'; // Importando o arquivo CSS
 
 const Login = () => {
@@ -51,42 +52,41 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Usuário:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Senha:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>
-            <input type="checkbox" /> Lembrar-me
-          </label>
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        <a href="/forgot-password">Esqueceu sua senha?</a>
-      </p>
-      <p>
-        <a href="/register">Não tem uma conta? Registre-se</a>
-      </p>
-    </div>
-  );
+    <h2>Login</h2>
+    {error && <p className="error-message">{error}</p>}
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="username">Usuário:</label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Senha:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>
+          <input type="checkbox" /> Lembrar-me
+        </label>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>
+      <Link to="/forgot-password">Esqueceu sua senha?</Link>
+    </p>
+    <p>
+      <Link to="/register">Não tem uma conta? Registre-se</Link>
+    </p>
+  </div>
+);
 };
-
 export default Login;
