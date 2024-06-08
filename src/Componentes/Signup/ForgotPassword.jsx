@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login'; // Importando o arquivo CSS
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -24,19 +25,22 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-container">
-      <h2>Esqueceu sua senha?</h2>
+      <h2>Mudar Senha</h2>
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
+          <input className='input-forgot-password'
             type="email"
             id="email"
             value={email}
             onChange={handleEmailChange}
+            placeholder='E-mail'
           />
         </div>
-        <button type="submit">Enviar</button>
+        <button className='btn-forgot-password' type="submit">Enviar</button>
+      </form>
+      <form>
+        <Link to="/login">Voltar para a página de Login</Link>
       </form>
     </div>
   );

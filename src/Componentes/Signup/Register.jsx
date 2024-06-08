@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Login.css'; // Importando o arquivo CSS
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -82,6 +83,9 @@ const Register = () => {
           />
         </div>
         <button type="submit">Registrar</button>
+      </form>
+      <form>
+        <Link to="/login">Voltar para a página de Login</Link>
       </form>
     </div>
   );
