@@ -9,7 +9,6 @@ import pocox6 from "../../assets/pocox6.png";
 import { Link } from "react-router-dom";
 
 const Products = () => {
-    console.log(a14);
     return (
         <div className="ProductList">
             
