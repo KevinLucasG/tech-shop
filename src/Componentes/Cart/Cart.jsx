@@ -5,7 +5,7 @@ import ProductsData from "../Products/productsData.jsx";
 import "./Cart.css";
 
 const Cart = () => {
-  const {cart, removeFromCart, clearCart} = useContext(CartContext);
+  const {cart, removeFromCart, clearCart, buyCart} = useContext(CartContext);
   const calculateTotal = () => {
    
     
@@ -15,6 +15,11 @@ const Cart = () => {
   const formatPrice = (price) => {
     return price.toFixed(2).replace('.', ',');
   };
+
+  function buyButton (){
+    window.alert("Compra Realizada com sucesso")
+    buyCart();
+  }
   
   return (
     <div>
@@ -37,7 +42,7 @@ const Cart = () => {
         <div className="confirmation-section">
           <button className="cleatbtn" onClick={clearCart}>Limpar Carrinho</button>
           <h3 className="TotalPrice">Total do Carrinho: R$ {calculateTotal().toFixed(2)}</h3>
-          <button className="buybtn">Comprar</button>
+          <button className="buybtn" onClick={buyButton}>Comprar</button>
         </div>
       )}
     </div>
