@@ -60,8 +60,6 @@
   margin: 0 auto;
 }
 
-/* Media queries para telas menores */
-
 @media (max-width: 1200px) {
   .product-window {
     width: 800px;
@@ -87,16 +85,32 @@
 }
 
 @media (max-width: 600px) {
-  .product-window {
-    width: 90%;
+  .section-product {
+    margin-top: 2rem;
   }
 
-  .description {
-    width: 80%;
+  .product-window {
+    width: 90%;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 
   .img-product-window {
     width: 200px;
+  }
+
+  .text-description {
+    width: 250px;
+    padding: 10px;
+    height: 300px;
+   
+  }
+
+  
+  .buy-section {
+    margin-top: 2rem;
   }
 
   .btn-buy {

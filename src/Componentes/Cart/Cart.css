@@ -63,3 +63,13 @@
     
     
 }
+
+@media (max-width: 1000px) {
+    .cart-item{
+        width:600px;
+    }
+  }
+
+.cart-item > *:not(:first-child) {
+    align-self: center
+}
