@@ -18,7 +18,7 @@ const Navbar = () => {
           Sobre nós
         </Link>
         <Link className="link" to="/Cart">
-          <img src={cart} alt="Cart" className="cart-icon" width={"30px"} />
+          <img src={cart} alt="Cart" className="cart-icon" width={"30px"} /> 
         </Link>
       </nav>
     </div>
