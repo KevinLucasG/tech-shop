@@ -4,7 +4,13 @@ import image from "./image1.jpeg";
 const About = () => {
   return (
     <div className="container">
-      <img src={image} alt="image" width="500px" height="500px"></img>
+      <img
+        src={image}
+        alt="image"
+        width="500px"
+        height="500px"
+        className="image-about"
+      ></img>
       <div className="description">
         <h1 className="about"> Sobre nós </h1>
         <p>

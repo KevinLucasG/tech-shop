@@ -47,10 +47,6 @@ const ProductPage = () => {
           </button>
         </div>
       </div>
-      <div className="cart-info">
-        <h3>Carrinho</h3>
-        {/* Aqui você pode listar os produtos no carrinho se desejar */}
-      </div>
     </div>
   );
 };
