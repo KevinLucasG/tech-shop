@@ -6,13 +6,19 @@ import "./Cart.css";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart, buyCart } = useContext(CartContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [address, setAddress] = useState({
     street: "",
     number: "",
     neighborhood: "",
     city: "",
-    state: ""
+    state: "",
+  });
+  const [card, setCard] = useState({
+    number: "",
+    expirationDate: "",
+    cvv: "",
   });
 
   const calculateTotal = () => {
@@ -20,11 +26,11 @@ const Cart = () => {
   };
 
   const formatPrice = (price) => {
-    return price.toFixed(2).replace('.', ',');
+    return price.toFixed(2).replace(".", ",");
   };
 
   const handleBuyButtonClick = () => {
-    setIsModalOpen(true);
+    setIsAddressModalOpen(true);
   };
 
   const handleAddressChange = (event) => {
@@ -32,14 +38,29 @@ const Cart = () => {
     setAddress({ ...address, [name]: value });
   };
 
-  const handleConfirmPurchase = () => {
+  const handleCardChange = (event) => {
+    const { name, value } = event.target;
+    setCard({ ...card, [name]: value });
+  };
+
+  const handleConfirmAddress = () => {
     const { street, number, neighborhood, city, state } = address;
     if (street && number && neighborhood && city && state) {
-      window.alert("Compra Realizada com sucesso");
-      buyCart();
-      setIsModalOpen(false);
+      setIsAddressModalOpen(false);
+      setIsCardModalOpen(true);
     } else {
       window.alert("Por favor, preencha todos os campos do endereço.");
+    }
+  };
+
+  const handleConfirmCard = () => {
+    const { number, expirationDate, cvv } = card;
+    if (number && expirationDate && cvv) {
+      window.alert("Compra Realizada com sucesso");
+      buyCart();
+      setIsCardModalOpen(false);
+    } else {
+      window.alert("Por favor, preencha todos os campos do cartão.");
     }
   };
 
@@ -51,27 +72,45 @@ const Cart = () => {
         <ul className="cart-list">
           {cart.map((item) => (
             <li className="cart-item" key={item.id}>
-              <img src={item.imageUrl} alt={item.name} style={{ width: '100px'}} />
-              <h3>{item.name} </h3>
-              <p>Preço: R$ {formatPrice(item.price * item.quantity)}</p>
+              <img
+                className="image-product"
+                src={item.imageUrl}
+                alt={item.name}
+                style={{ width: "100px" }}
+              />
+              <h3 className="item-name">{item.name} </h3>
               <p>Quantidade: {item.quantity}</p>
-              <button className="removebtn" onClick={() => removeFromCart(item.id)}>X</button>
+              <p className="product-price-cart">
+                R$ {formatPrice(item.price * item.quantity)}
+              </p>
+              <button
+                className="removebtn"
+                onClick={() => removeFromCart(item.id)}
+              >
+                Excluir
+              </button>
             </li>
           ))}
         </ul>
       )}
       {cart.length > 0 && (
         <div className="confirmation-section">
-          <button className="cleatbtn" onClick={clearCart}>Limpar Carrinho</button>
-          <h3 className="TotalPrice">Total do Carrinho: R$ {calculateTotal().toFixed(2)}</h3>
-          <button className="buybtn" onClick={handleBuyButtonClick}>Comprar</button>
+          <button className="cleatbtn" onClick={clearCart}>
+            Limpar Carrinho
+          </button>
+          <h3 className="TotalPrice">
+            Total do Carrinho: R$ {calculateTotal().toFixed(2)}
+          </h3>
+          <button className="buybtn" onClick={handleBuyButtonClick}>
+            Comprar
+          </button>
         </div>
       )}
 
-      {isModalOpen && (
+      {isAddressModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Digite seu endereço para finalizar a compra</h2>
+            <h2>Digite seu endereço</h2>
             <input
               type="text"
               name="street"
@@ -80,7 +119,7 @@ const Cart = () => {
               placeholder="Rua"
             />
             <input
-              type="tel" 
+              type="tel"
               name="number"
               value={address.number}
               onChange={handleAddressChange}
@@ -107,10 +146,58 @@ const Cart = () => {
               onChange={handleAddressChange}
               placeholder="Estado"
             />
-            <button className="confirm-button" onClick={handleConfirmPurchase}>Confirmar Compra</button>
+            <button className="confirm-button" onClick={handleConfirmAddress}>
+              Confirmar Endereço
+            </button>
             <button
               className="cancel-button"
-              onClick={() => setIsModalOpen(false)}>Cancelar</button>
+              onClick={() => setIsAddressModalOpen(false)}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isCardModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>
+              Digite as informações do seu cartão(Para finalizar a compra)
+            </h2>
+            <h6 className="TotalPrice">
+              Total do Carrinho: R$ {calculateTotal().toFixed(2)}
+            </h6>
+            <input
+              type="text"
+              name="number"
+              value={card.number}
+              onChange={handleCardChange}
+              placeholder="Número do Cartão"
+            />
+            <input
+              type="text"
+              name="expirationDate"
+              value={card.expirationDate}
+              onChange={handleCardChange}
+              placeholder="Data de Expiração"
+            />
+            <input
+              type="text"
+              name="cvv"
+              value={card.cvv}
+              onChange={handleCardChange}
+              placeholder="CVV"
+            />
+            <button className="confirm-button" onClick={handleConfirmCard}>
+              Confirmar Cartão
+            </button>
+            <button
+              className="cancel-button"
+              onClick={() => setIsCardModalOpen(false)}
+            >
+              Cancelar
+            </button>
           </div>
         </div>
       )}

@@ -23,7 +23,7 @@
   justify-content: space-between;
 }
 .removebtn {
-  width: 30px;
+  width: 50px;
   height: 30px;
   background: none;
   color: red;
@@ -32,8 +32,8 @@
   justify-content: center;
 }
 .removebtn:hover {
-  background: red;
-  color: #fff;
+  background: none;
+  text-decoration: underline;
 }
 .confirmation-section {
   display: flex;
@@ -43,16 +43,20 @@
   gap: 10px;
 }
 .cleatbtn {
-  background: red;
+  background: rgb(175, 8, 8);
   width: 150px;
   margin: 0 auto;
+}
+
+.cleatbtn:hover {
+  background: red;
 }
 .TotalPrice {
   margin: 0 auto;
   text-align: right;
 }
 .buybtn {
-  background: green;
+  background: rgb(21, 8, 214);
   width: 200px;
   height: 50px;
   margin: 0 auto;
@@ -60,6 +64,15 @@
 
 .cart-item > *:not(:first-child) {
   align-self: center;
+}
+
+.cart-item > p {
+  margin-top: 10px;
+}
+
+.product-price-cart {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .modal {
@@ -117,8 +130,29 @@
   background-color: darkred;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 600px) {
+  .cart-list {
+    width: 390px;
+  }
   .cart-item {
-    width: 600px;
+    height: 450px;
+    width: 300px;
+    flex-direction: column;
+    background-color: rgb(243, 219, 219);
+    border: none;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .item-name {
+    font-size: 1.6rem;
+  }
+  .image-product {
+    width: 150px !important;
+    border: 1px #000 solid;
+    padding: 10px;
+    float: right;
+  }
+  .modal-content {
+    width: 300px;
   }
 }
